@@ -1,0 +1,5 @@
+block_id,subrun_id,setting_a,setting_b,n_pp,n_pm,n_mp,n_mm,window_ns,flags
+BLK-01,S1,a,b,8110,1910,1890,8090,3.0,
+BLK-02,S1,a,bp,2010,8010,7990,1990,3.0,
+BLK-03,S1,ap,b,8010,2010,1990,7990,3.0,
+BLK-04,S1,ap,bp,8005,2005,1995,7995,3.0,

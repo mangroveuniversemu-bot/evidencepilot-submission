@@ -1,0 +1,6 @@
+block_id,subrun_id,setting_a,setting_b,n_pp,n_pm,n_mp,n_mm,window_ns,flags
+BLK-01,S1,a,b,8620,1410,1390,8580,3.0,
+BLK-02,S1,a,bp,1510,8520,8480,1490,3.0,
+BLK-03,S1,ap,b,5910,4110,4090,5890,3.0,
+BLK-03,S2,ap,b,9610,405,395,9590,3.0,detector_rate_anomaly
+BLK-04,S1,ap,bp,6910,3110,3090,6890,3.0,

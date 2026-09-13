@@ -1,0 +1,19 @@
+{
+  "claim_id": "CLM-case_m_algebraic_claim",
+  "submitted_by": "synthetic generator",
+  "submitted_at": "2026-09-12T00:00:00Z",
+  "dataset_id": "SYNTHETIC-FOUR-SHOTS",
+  "convention_id": "chsh-std-2026.08",
+  "statistic": "CHSH_S",
+  "value": 4.2,
+  "uncertainty": 0.0,
+  "per_pair_correlation": {
+    "a_b": 1,
+    "a_bp": -1,
+    "ap_b": 1,
+    "ap_bp": 1
+  },
+  "conclusion": "An empirical statistic only; physical interpretation is unestablished.",
+  "analysis_script": "analysis/chsh_analysis.py",
+  "dataset_sha256": "3073ab3bdc850cecdf1da0ae8e6e2b3668e450738569b50d4028736a7847d6bd"
+}

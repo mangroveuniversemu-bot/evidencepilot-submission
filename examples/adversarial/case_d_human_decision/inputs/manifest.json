@@ -1,0 +1,18 @@
+{
+  "package_id": "PKG-2026-0828-QO-05",
+  "experiment_id": "EXP-CHSH-2026-08-25",
+  "created_at": "2026-08-28T18:40:00Z",
+  "instrument": "SPDC source + 2x polarisation analyser, synthetic",
+  "operator": "t.abara",
+  "environment": {
+    "python": "3.12.4",
+    "numpy": "2.1.0"
+  },
+  "notes": "Synthetic package. BLK-03/S2 carries an open detector-rate anomaly flag (instrument log QO-LOG-2026-08-25); the flag has not been adjudicated.",
+  "files": {
+    "raw_counts.csv": "3260c16be1c948523b53761035f7e49ff04f5be3a587a47f0fb1a06a55383724",
+    "convention.json": "a8c2fc239e9bed9dbbf830b5511b46523cf84f3c588a9a19454d0525d8c70cb0",
+    "claimed_analysis.json": "a76d5e066c5be036c892fa1b0270f8c04019fb5a8cdde36caf55429d87579fdc",
+    "analysis/chsh_analysis.py": "b1bc54075170c6bc354d51524924dd465d9fa8ddb82b920b7e4eb612af5a33df"
+  }
+}

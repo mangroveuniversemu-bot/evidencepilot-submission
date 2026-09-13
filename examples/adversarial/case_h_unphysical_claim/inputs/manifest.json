@@ -1,0 +1,18 @@
+{
+  "package_id": "PKG-2026-0826-QO-04",
+  "experiment_id": "EXP-CHSH-2026-08-23",
+  "created_at": "2026-08-26T14:20:00Z",
+  "instrument": "SPDC source + 2x polarisation analyser, synthetic",
+  "operator": "t.abara",
+  "environment": {
+    "python": "3.12.4",
+    "numpy": "2.1.0"
+  },
+  "notes": "Synthetic package: accidental-subtraction bug inflates every correlation.",
+  "files": {
+    "raw_counts.csv": "e820e160234a7ced3c0f1d205ff6750da3feb8add007f9bd25304feae20c16d4",
+    "convention.json": "a8c2fc239e9bed9dbbf830b5511b46523cf84f3c588a9a19454d0525d8c70cb0",
+    "claimed_analysis.json": "4e5368c74cc739c7545f087c4363fc9d1460b1fece5952bc318bdcf3bfe0c4d3",
+    "analysis/chsh_analysis.py": "b1bc54075170c6bc354d51524924dd465d9fa8ddb82b920b7e4eb612af5a33df"
+  }
+}

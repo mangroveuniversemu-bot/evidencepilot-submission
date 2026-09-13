@@ -1,0 +1,20 @@
+{
+  "claim_id": "CLM-2026-0826-CHSH",
+  "submitted_by": "collaborator:t.abara",
+  "submitted_at": "2026-08-26T14:15:00Z",
+  "dataset_id": "DS-CHSH-2026-08-23",
+  "dataset_sha256": "e820e160234a7ced3c0f1d205ff6750da3feb8add007f9bd25304feae20c16d4",
+  "convention_id": "chsh-std-2026.08",
+  "statistic": "CHSH_S",
+  "value": 3.42,
+  "uncertainty": 0.009,
+  "per_pair_correlation": {
+    "a_b": 0.86,
+    "a_bp": -0.84,
+    "ap_b": 0.86,
+    "ap_bp": 0.86
+  },
+  "conclusion": "Bell inequality violated: S = 3.42 > 2.",
+  "analysis_script": "analysis/chsh_analysis.py",
+  "analysis_script_sha256": null
+}

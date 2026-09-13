@@ -1,0 +1,43 @@
+[project]
+name = "evidencepilot"
+version = "0.1.0"
+description = "An autonomous research-verification agent that escalates only what needs a human."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "pydantic>=2.9,<3",
+]
+
+[project.optional-dependencies]
+# The Strands agent and Bedrock model are only needed to run the narrated
+# demo. Every verdict in this repository is computable without them.
+agent = ["strands-agents>=1.0,<2"]
+runtime = ["strands-agents==1.54.0", "bedrock-agentcore==1.22.0"]
+ui = ["starlette==1.6.0", "uvicorn==0.52.4"]
+dev = ["pytest>=8.3,<9", "ruff>=0.9,<1", "httpx>=0.28,<1"]
+
+[tool.setuptools.packages.find]
+include = ["agent*", "app*", "evidence*", "policy*", "tools*"]
+exclude = ["examples*", "infra*", "tests*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+app = ["static/*.html", "static/*.css", "static/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["examples"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]

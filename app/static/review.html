@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidencePilot · Review workbench</title>
+  <link rel="stylesheet" href="/static/review.css">
+  <script defer src="/static/review.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="EvidencePilot home"><span class="brand-mark" aria-hidden="true">E<span>↗</span></span><span>EvidencePilot<small>RESEARCH OPERATIONS</small></span></a>
+    <span class="local-badge"><span aria-hidden="true">●</span> LOCAL WORKBENCH</span>
+  </header>
+  <div class="mode-banner"><strong>Verification-only rehearsal</strong><span>Bundled synthetic data · No model calls · No AWS resources created</span></div>
+  <main>
+    <div class="page-heading"><div><p class="eyebrow">FROM ARTIFACTS TO ACCOUNTABILITY</p><h1>The evidence. Then your decision.</h1><p class="subtitle">Reproduce the result, inspect the boundary, and leave a trace of what you choose.</p></div><a href="#history" class="text-link">Review history <span aria-hidden="true">↘</span></a></div>
+    <div class="workspace">
+      <aside class="case-panel" aria-label="Synthetic case library">
+        <p class="section-label">01 / SELECT A CASE</p><h2>Review queue</h2>
+        <p class="muted small">Six synthetic scenarios.<br>One deterministic verifier.</p>
+        <div id="case-list"></div>
+        <div class="boundary-note"><span class="section-label">THE TRUST BOUNDARY</span><p>Model prose is advisory.<br>Verdicts come from policy.<br>Human intent is a separate record.</p></div>
+      </aside>
+      <section class="review-panel" aria-label="Verification and decision">
+        <div class="run-heading"><div><p class="section-label">02 / INSPECT THE EVIDENCE</p><h2 id="case-title">Maya's review</h2><p id="case-detail" class="muted small">Find the hidden convention mismatch.</p></div><button id="run-button" class="primary" type="button">Run verification <span aria-hidden="true">↗</span></button></div>
+        <p id="status" role="status" aria-live="polite" class="status">Ready. Select a case and run verification.</p>
+        <div id="error" role="alert" class="error" hidden></div>
+        <div id="empty" class="empty"><div class="empty-glyph" aria-hidden="true">∴</div><h3>No result assumed.</h3><p>The verifier will inspect provenance, replay the evidence,<br>and apply the existing policy. No model is involved in this mode.</p><span class="tiny-tag">INPUT → TOOLS → POLICY → CERTIFICATE</span></div>
+        <div id="result" hidden>
+          <article id="verdict-panel" class="verdict-card">
+            <div class="verdict-top"><span id="verdict" class="verdict-word"></span><span id="rule" class="rule"></span></div>
+            <h3 id="headline"></h3><p id="root-cause" class="small"></p>
+            <div class="facts"><div><span>CLAIM STATE</span><strong id="claim-state"></strong></div><div><span>EVIDENCE CLASS</span><strong id="evidence-class"></strong></div><div><span>PHYSICAL INTERPRETATION</span><strong id="physics"></strong></div></div>
+          </article>
+          <div id="numbers" class="numbers"></div>
+          <div class="evidence-columns"><section class="card"><p class="section-label">VERIFICATION TRACE</p><ol id="trace" class="trace"></ol></section><section class="card"><p class="section-label">CERTIFICATE INTEGRITY</p><h3 class="integrity-title">Checksum verified <span aria-hidden="true">✓</span></h3><p class="muted small">An unkeyed SHA-256 checksum, not a digital signature or identity verification.</p><code id="certificate-id"></code><code id="checksum" class="hash"></code><a id="download" class="secondary download" download>Download review JSON <span aria-hidden="true">↓</span></a></section></div>
+          <details class="details"><summary>Findings & scientific limitations</summary><ul id="findings"></ul><ul id="limitations"></ul></details>
+          <section class="advisory-note"><p class="section-label">AI ADVISORY / NOT REQUESTED</p><p>No live Strands or Bedrock run is represented here. These steps were executed by the deterministic verifier.</p></section>
+          <section id="human-panel" class="human-panel">
+            <p class="section-label">03 / RECORD HUMAN INTENT</p><h2 id="decision-title">One question for you.</h2>
+            <p id="question"></p><p id="context" class="context small"></p><p id="preference-note" class="small"></p>
+            <div id="no-decision" class="success-note" hidden>No escalation. This result does not require a human decision.</div>
+            <form id="decision-form" hidden>
+              <fieldset id="options"><legend>Your selected next action</legend></fieldset>
+              <div class="input-row"><label for="actor">Reviewer display name <span>(self-reported)</span><input id="actor" name="actor" maxlength="80" required autocomplete="off" placeholder="Name or review alias"></label></div>
+              <label for="reason">Why this choice? <span>Required for every decision</span><textarea id="reason" name="reason" maxlength="2000" rows="3" required placeholder="Record the evidence and reasoning behind your choice. Do not enter secrets or private research data."></textarea></label>
+              <p class="small muted">Local record only. Saving does not re-run tools, exclude data, approve a claim, or change the certificate. Names are not authenticated.</p>
+              <label class="ack"><input id="ack" type="checkbox" required><span>I understand this records intent only; the original verdict stays unchanged.</span></label>
+              <button id="save-button" type="submit" class="primary" disabled>Save decision record <span aria-hidden="true">↗</span></button>
+            </form>
+            <article id="receipt" class="receipt" hidden></article>
+          </section>
+        </div>
+      </section>
+    </div>
+    <section id="history" class="history-section"><div class="history-heading"><div><p class="section-label">LOCAL AUDIT TRAIL</p><h2>Review history</h2><p class="small muted">Latest 100 verification runs. Records survive browser refresh and server restart. They are not synced to GitHub or AWS.</p></div><button id="refresh-history" class="secondary" type="button">Refresh history</button></div><div id="history-list"></div></section>
+    <footer><span>EvidencePilot / ResearchOps Agent</span><span>Evidence is finite. Responsibility stays human.</span></footer>
+  </main>
+</body>
+</html>

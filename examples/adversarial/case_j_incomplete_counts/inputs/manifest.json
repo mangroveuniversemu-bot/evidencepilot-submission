@@ -1,0 +1,18 @@
+{
+  "package_id": "PKG-2026-0824-QO-01",
+  "experiment_id": "EXP-CHSH-2026-08-21",
+  "created_at": "2026-08-24T19:30:00Z",
+  "instrument": "SPDC source + 2x polarisation analyser, synthetic",
+  "operator": "r.okafor",
+  "environment": {
+    "python": "3.12.4",
+    "numpy": "2.1.0"
+  },
+  "notes": "Synthetic package: the ap_bp acquisition block was never exported.",
+  "files": {
+    "raw_counts.csv": "815995eb24569bb61dfcdf0eb0449cb0e168ae7ef9cc216f28d57ded6b60346f",
+    "convention.json": "a8c2fc239e9bed9dbbf830b5511b46523cf84f3c588a9a19454d0525d8c70cb0",
+    "claimed_analysis.json": "812ad123b838c7962db5b9ae059fb540a21517dffa41ba4ca3db2f0fc0e4f1f3",
+    "analysis/chsh_analysis.py": "b1bc54075170c6bc354d51524924dd465d9fa8ddb82b920b7e4eb612af5a33df"
+  }
+}

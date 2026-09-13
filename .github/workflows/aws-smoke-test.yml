@@ -1,0 +1,108 @@
+name: AWS live smoke test
+
+# Deliberately manual. Live Bedrock calls are slow, cost credits, and turn
+# transient network failures into false red builds, so they never run on push.
+on:
+  workflow_dispatch:
+    inputs:
+      case:
+        description: Bundled synthetic case to verify
+        type: choice
+        options: [maya, clean, missing_evidence, human_decision, stale, injection]
+        default: maya
+        required: true
+      model_id:
+        description: Explicitly selected Bedrock model or inference profile id
+        required: true
+      region:
+        description: AWS region
+        default: ap-southeast-2
+        required: true
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  smoke:
+    name: narrated run against Bedrock
+    runs-on: ubuntu-latest
+    environment: aws
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install with the agent extra
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[agent,dev]"
+
+      - name: Configure AWS credentials
+        # Set AWS_ROLE_ARN as a repository secret; OIDC, no long-lived keys.
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ inputs.region }}
+
+      - name: Narrated verdict via Strands + Bedrock
+        env:
+          CASE_ID: ${{ inputs.case }}
+          EVIDENCEPILOT_MODEL_ID: ${{ inputs.model_id }}
+          AWS_REGION: ${{ inputs.region }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          from app.poc import CASES, EXAMPLES
+          from agent.researchops_agent import run_model_report
+
+          root = EXAMPLES / CASES[os.environ['CASE_ID']] / 'inputs'
+          report = run_model_report(str(root))
+          Path('narrated.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+          assert report['advisory']['status'] == 'complete', report['advisory']['status']
+          PY
+
+      - name: Check actual workflow completion and independent evidence
+        env:
+          CASE_ID: ${{ inputs.case }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          from app.poc import CASES, EXAMPLES
+          from agent.researchops_agent import verify_package
+          from agent.schemas import EvidenceCertificate
+          from evidence.certificate import verify_signature
+
+          root = EXAMPLES / CASES[os.environ['CASE_ID']] / 'inputs'
+          baseline = verify_package(root)
+          Path('deterministic.json').write_text(baseline.certificate.model_dump_json(indent=2))
+          report = json.loads(Path('narrated.json').read_text(encoding='utf-8'))
+          cert = EvidenceCertificate.model_validate(report['certificate'])
+          assert verify_signature(cert) and report['certificate_integrity_valid']
+          assert cert.verdict_card == baseline.card
+          investigation = report['advisory']['investigation']
+          assert investigation['investigation_complete']
+          assert investigation['state'] == 'complete'
+          assert not investigation['allowed_actions']
+          successful = [r['action'] for r in investigation['agent_trace'] if r['outcome'] == 'ok']
+          assert successful[:2] == ['read_experiment_package', 'check_provenance']
+          assert successful[-1] == 'issue_verdict'
+          assert investigation['verification_trace']['steps']
+          assert report['advisory']['prose_checked'] is False
+          print('Evidence and workflow verified; advisory prose still needs human review.')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-test-output
+          path: |
+            deterministic.json
+            narrated.json

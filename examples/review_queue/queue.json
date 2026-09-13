@@ -1,0 +1,10 @@
+{
+  "queue_id": "QUEUE-2026-09-01-1700",
+  "review": "Quantum device review, 2026-09-01 17:00",
+  "packages": [
+    "examples/adversarial/case_e_clean_pass/inputs",
+    "examples/adversarial/case_c_missing_evidence/inputs",
+    "examples/adversarial/case_d_human_decision/inputs",
+    "examples/maya_case/inputs"
+  ]
+}

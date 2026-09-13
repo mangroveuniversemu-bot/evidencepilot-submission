@@ -1,0 +1,30 @@
+{
+  "_comment": "Frozen expectations for the hero scenario. Regenerate with `python scripts/build_examples.py` followed by tests/regression.",
+  "claim_id": "CLM-2026-0831-CHSH",
+  "verdict": "BLOCK",
+  "claim_state": "NOT_REPRODUCED",
+  "evidence_class": "STATISTICAL_REPLAY",
+  "fired_rule": "R-005",
+  "root_cause_deviation": "no_channel_correction:BLK-02",
+  "numbers": {
+    "claimed_S": 2.61,
+    "replayed_S": 1.9625,
+    "sigma_S": 0.010369,
+    "delta_S": 0.6475,
+    "delta_in_sigma": 62.448176,
+    "classical_bound": 2.0,
+    "sigma_above_bound": -3.61669,
+    "E(a_b)": 0.7625,
+    "E(a_bp)": 0.325,
+    "E(ap_b)": 0.7625,
+    "E(ap_bp)": 0.7625
+  },
+  "escalation": {
+    "recommended_option_id": "RERUN_UNDER_REGISTERED_CONVENTION",
+    "option_ids": [
+      "RERUN_UNDER_REGISTERED_CONVENTION",
+      "EXCLUDE_RUN",
+      "OVERRIDE_WITH_JUSTIFICATION"
+    ]
+  }
+}

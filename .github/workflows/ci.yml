@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publication-privacy:
+    name: Publication identity and file guard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_publication.py
+
+  runtime-contract:
+    name: AgentCore HTTP contract (no AWS calls)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install -e ".[dev,runtime]"
+      - run: python -m pytest -q tests/runtime tests/integration/test_poc.py
+
+  check:
+    name: lint + test (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev,ui]"
+
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Test
+        run: python -m pytest -q
+
+      - name: Examples are reproducible
+        # Regenerating from the committed generator must not change a byte.
+        run: |
+          python scripts/build_examples.py
+          git diff --exit-code -- examples/
+
+      - name: Scenarios run end to end
+        run: |
+          python -m app.main verify examples/maya_case/inputs || true
+          python -m app.main queue examples/review_queue/queue.json
+          python -m app.main benchmark collatz --limit 100000
+
+      - name: The deterministic path never touches the cloud SDK
+        run: |
+          python - <<'PY'
+          import sys
+          import app.main            # noqa: F401
+          import agent.researchops_agent  # noqa: F401
+          import policy.verdict_rules     # noqa: F401
+          import tools.chsh_replay        # noqa: F401
+          banned = sorted(
+              m for m in sys.modules
+              if m.split(".")[0] in {"boto3", "botocore", "strands"}
+          )
+          assert not banned, f"deterministic path imported: {banned}"
+          print("no cloud SDK reachable from the verification core")
+          PY

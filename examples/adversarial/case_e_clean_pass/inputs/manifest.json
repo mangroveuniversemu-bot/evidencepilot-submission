@@ -1,0 +1,18 @@
+{
+  "package_id": "PKG-2026-0827-QO-02",
+  "experiment_id": "EXP-CHSH-2026-08-24",
+  "created_at": "2026-08-27T08:05:00Z",
+  "instrument": "SPDC source + 2x polarisation analyser, synthetic",
+  "operator": "s.lindqvist",
+  "environment": {
+    "python": "3.12.4",
+    "numpy": "2.1.0"
+  },
+  "notes": "Synthetic package: complete provenance, claim reproduces exactly.",
+  "files": {
+    "raw_counts.csv": "e820e160234a7ced3c0f1d205ff6750da3feb8add007f9bd25304feae20c16d4",
+    "convention.json": "a8c2fc239e9bed9dbbf830b5511b46523cf84f3c588a9a19454d0525d8c70cb0",
+    "claimed_analysis.json": "ae1814f6f5b36ccbd4d42349054fa774f1e979535b8a2c1eaaac6ed8a5101d39",
+    "analysis/chsh_analysis.py": "b1bc54075170c6bc354d51524924dd465d9fa8ddb82b920b7e4eb612af5a33df"
+  }
+}

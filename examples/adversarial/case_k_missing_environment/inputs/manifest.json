@@ -1,0 +1,15 @@
+{
+  "package_id": "PKG-2026-0823-QO-09",
+  "experiment_id": "EXP-CHSH-2026-08-20",
+  "created_at": "2026-08-23T07:40:00Z",
+  "instrument": "SPDC source + 2x polarisation analyser, synthetic",
+  "operator": "s.lindqvist",
+  "environment": null,
+  "notes": "Synthetic package: registered convention, no environment lock.",
+  "files": {
+    "raw_counts.csv": "e820e160234a7ced3c0f1d205ff6750da3feb8add007f9bd25304feae20c16d4",
+    "convention.json": "a8c2fc239e9bed9dbbf830b5511b46523cf84f3c588a9a19454d0525d8c70cb0",
+    "claimed_analysis.json": "c9b2b240dee2df4ec753552cff4e10a6475b416030d2ab428c17ce0679e3baf9",
+    "analysis/chsh_analysis.py": "b1bc54075170c6bc354d51524924dd465d9fa8ddb82b920b7e4eb612af5a33df"
+  }
+}

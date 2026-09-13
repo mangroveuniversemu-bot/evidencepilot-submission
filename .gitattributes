@@ -1,0 +1,2 @@
+# Artifact hashes must be identical on Windows, Linux, and in deployment ZIPs.
+* text=auto eol=lf

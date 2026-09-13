@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="880" viewBox="0 0 940 880" font-family="'DejaVu Sans',Verdana,Arial,sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#44506b"/>
+    </marker>
+  </defs>
+  <rect width="940" height="880" fill="#ffffff"/>
+  <text x="470" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#141a26">EvidencePilot — verification pipeline</text>
+  <text x="470" y="58" text-anchor="middle" font-size="13" fill="#5a6580">Background work runs to completion; only a real decision reaches a person.</text>
+
+  <rect x="330" y="80" width="280" height="46" rx="8" fill="#eef2fb" stroke="#44506b" stroke-width="1.5"/>
+  <text x="470" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#141a26">Submitted experiment package</text>
+  <text x="470" y="118" text-anchor="middle" font-size="11" fill="#5a6580">raw counts · convention · claim · manifest</text>
+
+  <rect x="250" y="152" width="440" height="72" rx="8" fill="#e8f0e8" stroke="#3d6b45" stroke-width="1.5"/>
+  <text x="470" y="174" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3322">Strands ResearchOps Agent (Amazon Bedrock)</text>
+  <text x="470" y="192" text-anchor="middle" font-size="11" fill="#3d6b45">sequences tools · explains the result · surfaces the decision</text>
+  <text x="470" y="211" text-anchor="middle" font-size="11" font-style="italic" fill="#8a3324">never computes a number · never chooses the verdict</text>
+
+  <rect x="60" y="252" width="820" height="130" rx="8" fill="#f6f7fa" stroke="#44506b" stroke-width="1.5"/>
+  <text x="80" y="274" font-size="13" font-weight="bold" fill="#141a26">tools/ — deterministic, no model, no network</text>
+  <rect x="78" y="288" width="146" height="76" rx="6" fill="#ffffff" stroke="#8a93a8"/>
+  <text x="151" y="308" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#141a26">artifact_reader</text>
+  <text x="151" y="326" text-anchor="middle" font-size="10" fill="#5a6580">parse + hash</text>
+  <text x="151" y="341" text-anchor="middle" font-size="10" fill="#5a6580">schema validate</text>
+  <rect x="236" y="288" width="146" height="76" rx="6" fill="#ffffff" stroke="#8a93a8"/>
+  <text x="309" y="308" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#141a26">provenance_checker</text>
+  <text x="309" y="326" text-anchor="middle" font-size="10" fill="#5a6580">PRV-001..006</text>
+  <text x="309" y="341" text-anchor="middle" font-size="10" fill="#5a6580">stale-input guard</text>
+  <rect x="394" y="288" width="146" height="76" rx="6" fill="#ffffff" stroke="#8a93a8"/>
+  <text x="467" y="308" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#141a26">chsh_replay</text>
+  <text x="467" y="326" text-anchor="middle" font-size="10" fill="#5a6580">counts → E(a,b) → S</text>
+  <text x="467" y="341" text-anchor="middle" font-size="10" fill="#5a6580">plug-in SE + diagnostics</text>
+  <rect x="552" y="288" width="146" height="76" rx="6" fill="#ffffff" stroke="#8a93a8"/>
+  <text x="625" y="308" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#141a26">root_cause</text>
+  <text x="625" y="326" text-anchor="middle" font-size="10" fill="#5a6580">replays declared</text>
+  <text x="625" y="341" text-anchor="middle" font-size="10" fill="#5a6580">deviations</text>
+  <rect x="710" y="288" width="152" height="76" rx="6" fill="#ffffff" stroke="#8a93a8"/>
+  <text x="786" y="308" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#141a26">benchmark_runner</text>
+  <text x="786" y="326" text-anchor="middle" font-size="10" fill="#5a6580">finite search</text>
+  <text x="786" y="341" text-anchor="middle" font-size="10" fill="#5a6580">(hidden eval case)</text>
+
+  <rect x="200" y="410" width="540" height="96" rx="8" fill="#fdf3e3" stroke="#8a6d24" stroke-width="1.5"/>
+  <text x="470" y="432" text-anchor="middle" font-size="13" font-weight="bold" fill="#3d3110">policy/verdict_rules.py — ordered rule table, first match wins</text>
+  <text x="470" y="452" text-anchor="middle" font-size="10.5" fill="#5c4a15">R-001 replay · R-002 integrity · R-004 definition · R-003 range · R-005 mismatch</text>
+  <text x="470" y="469" text-anchor="middle" font-size="10.5" fill="#5c4a15">R-006 robustness · R-007/8 provenance · R-010 sample review · R-009 replay accepted</text>
+  <text x="470" y="493" text-anchor="middle" font-size="10.5" font-style="italic" fill="#8a6d24">policy/claim_states.py caps what the evidence is allowed to be called</text>
+
+  <rect x="60" y="534" width="180" height="56" rx="8" fill="#e6f3ea" stroke="#2f7a45" stroke-width="1.5"/>
+  <text x="150" y="558" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4a2b">ALLOW</text>
+  <text x="150" y="576" text-anchor="middle" font-size="10" fill="#2f7a45">certificate, no question</text>
+  <rect x="256" y="534" width="180" height="56" rx="8" fill="#fdf3e3" stroke="#8a6d24" stroke-width="1.5"/>
+  <text x="346" y="558" text-anchor="middle" font-size="14" font-weight="bold" fill="#5c4a15">REVIEW</text>
+  <text x="346" y="576" text-anchor="middle" font-size="10" fill="#8a6d24">reproduced, not certifiable</text>
+  <rect x="452" y="534" width="180" height="56" rx="8" fill="#fbeaea" stroke="#a03434" stroke-width="1.5"/>
+  <text x="542" y="558" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d1f1f">BLOCK</text>
+  <text x="542" y="576" text-anchor="middle" font-size="10" fill="#a03434">not reproduced / not verifiable</text>
+  <rect x="648" y="534" width="232" height="56" rx="8" fill="#eae9f8" stroke="#4a3f96" stroke-width="1.5"/>
+  <text x="764" y="558" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e2760">HUMAN_DECISION</text>
+  <text x="764" y="576" text-anchor="middle" font-size="10" fill="#4a3f96">both analyses defensible</text>
+
+  <rect x="200" y="618" width="540" height="70" rx="8" fill="#f6f7fa" stroke="#44506b" stroke-width="1.5"/>
+  <text x="470" y="640" text-anchor="middle" font-size="13" font-weight="bold" fill="#141a26">policy/escalation.py</text>
+  <text x="470" y="659" text-anchor="middle" font-size="10.5" fill="#5a6580">at most one decision per claim · each option states its consequence</text>
+  <text x="470" y="677" text-anchor="middle" font-size="10.5" font-style="italic" fill="#8a3324">a HUMAN_DECISION carries no recommendation</text>
+
+  <rect x="130" y="716" width="220" height="62" rx="8" fill="#eef2fb" stroke="#44506b" stroke-width="1.5"/>
+  <text x="240" y="738" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#141a26">VerdictCard</text>
+  <text x="240" y="757" text-anchor="middle" font-size="10" fill="#5a6580">verdict · claim state · numbers</text>
+  <rect x="366" y="716" width="220" height="62" rx="8" fill="#eef2fb" stroke="#44506b" stroke-width="1.5"/>
+  <text x="476" y="738" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#141a26">EvidenceCertificate</text>
+  <text x="476" y="757" text-anchor="middle" font-size="10" fill="#5a6580">checksummed · states its limits</text>
+  <rect x="602" y="716" width="220" height="62" rx="8" fill="#eef2fb" stroke="#44506b" stroke-width="1.5"/>
+  <text x="712" y="738" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#141a26">ExecutionTrace</text>
+  <text x="712" y="757" text-anchor="middle" font-size="10" fill="#5a6580">tool order · input digests</text>
+
+  <rect x="330" y="810" width="280" height="46" rx="8" fill="#e8f0e8" stroke="#3d6b45" stroke-width="1.5"/>
+  <text x="470" y="832" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3322">One decision reaches Maya</text>
+  <text x="470" y="848" text-anchor="middle" font-size="11" fill="#3d6b45">or none, when nothing needs her</text>
+
+  <path d="M 470 126 L 470 150" stroke="#44506b" stroke-width="1.6" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 224 L 470 250" stroke="#44506b" stroke-width="1.6" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 382 L 470 408" stroke="#44506b" stroke-width="1.6" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 506 L 470 522 L 150 522 L 150 532" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 506 L 470 522 L 346 522 L 346 532" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 506 L 470 522 L 542 522 L 542 532" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 506 L 470 522 L 764 522 L 764 532" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 150 590 L 150 604 L 470 604 L 470 616" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 346 590 L 346 604" stroke="#44506b" stroke-width="1.4" fill="none"/>
+  <path d="M 542 590 L 542 604" stroke="#44506b" stroke-width="1.4" fill="none"/>
+  <path d="M 764 590 L 764 604 L 470 604" stroke="#44506b" stroke-width="1.4" fill="none"/>
+  <path d="M 470 688 L 470 700 L 240 700 L 240 714" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 688 L 470 700 L 476 700 L 476 714" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 470 688 L 470 700 L 712 700 L 712 714" stroke="#44506b" stroke-width="1.4" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 476 778 L 476 808" stroke="#44506b" stroke-width="1.6" marker-end="url(#arrow)" fill="none"/>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "package_id": "PKG-2026-0831-QO-17",
+  "experiment_id": "EXP-CHSH-2026-08-27",
+  "created_at": "2026-08-31T22:44:00Z",
+  "instrument": "SPDC source + 2x polarisation analyser, synthetic",
+  "operator": "r.okafor",
+  "environment": null,
+  "notes": "Synthetic package. Submitted 18 hours before the 2026-09-01 17:00 device review.",
+  "files": {
+    "raw_counts.csv": "afbd732039fa6bf2fea11c5eb6b819dc2a2e5185fce9ce22b4820ae5ec81e0b5",
+    "convention.json": "82e9ebf799a9e96a2ab57a9a671de416972c5e45bd1b2e450c55c6b1ed10f779",
+    "claimed_analysis.json": "d9edc0612c45becd1314a97244e64a51a575d4856a3f33efae37d5322c6a394b"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "package_id": "PKG-case_m_algebraic_claim",
+  "experiment_id": "SYNTHETIC-FOUR-SHOTS",
+  "created_at": "2026-09-12T00:00:00Z",
+  "instrument": "synthetic generator",
+  "environment": {
+    "generator": "scripts/build_examples.py"
+  },
+  "notes": "Synthetic finite-sample counterexample; not hardware measurements.",
+  "files": {
+    "raw_counts.csv": "3073ab3bdc850cecdf1da0ae8e6e2b3668e450738569b50d4028736a7847d6bd",
+    "convention.json": "a8c2fc239e9bed9dbbf830b5511b46523cf84f3c588a9a19454d0525d8c70cb0",
+    "claimed_analysis.json": "09fda00fca78304ad2ab4aa385bb221490590894de0720c4e140cd67ea00e08c",
+    "analysis/chsh_analysis.py": "b1bc54075170c6bc354d51524924dd465d9fa8ddb82b920b7e4eb612af5a33df"
+  }
+}
